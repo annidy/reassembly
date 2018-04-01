@@ -1,10 +1,6 @@
 
 # Created by https://www.gitignore.io/api/c++,macos,xcode,assembler
 
-### Assembler ###
-*.[sS]
-*.bc
-
 ### C++ ###
 # Prerequisites
 *.d

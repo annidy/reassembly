@@ -1,0 +1,134 @@
+/Users/annidy/Work/reassembly/c4/a.out:
+
+md5: e8e5b2c996be3b7508f4f7deed5ec3b6
+
+(__TEXT,__text) section
+
+_main:
+    +0  0000000100000dd0  55                        pushq       %rbp
+    +1  0000000100000dd1  4889e5                    movq        %rsp, %rbp
+    +4  0000000100000dd4  4883ec10                  subq        $0x10, %rsp
+    +8  0000000100000dd8  bf05000000                movl        $0x5, %edi
+   +13  0000000100000ddd  e83e000000                callq       _setkey
+   +18  0000000100000de2  488d3db3010000            leaq        0x1b3(%rip), %rdi             Hello World
+   +25  0000000100000de9  e884010000                callq       0x100000f72                   ## symbol stub for: _strdup
+   +30  0000000100000dee  488945f8                  movq        %rax, -0x8(%rbp)
+   +34  0000000100000df2  488b7df8                  movq        -0x8(%rbp), %rdi
+   +38  0000000100000df6  e885000000                callq       _encrypt
+   +43  0000000100000dfb  488d3da6010000            leaq        0x1a6(%rip), %rdi             %s\n
+   +50  0000000100000e02  4889c6                    movq        %rax, %rsi
+   +53  0000000100000e05  b000                      movb        $0x0, %al
+   +55  0000000100000e07  e860010000                callq       0x100000f6c                   ## symbol stub for: _printf
+   +60  0000000100000e0c  31c9                      xorl        %ecx, %ecx
+   +62  0000000100000e0e  8945f4                    movl        %eax, -0xc(%rbp)
+   +65  0000000100000e11  89c8                      movl        %ecx, %eax
+   +67  0000000100000e13  4883c410                  addq        $0x10, %rsp
+   +71  0000000100000e17  5d                        popq        %rbp
+   +72  0000000100000e18  c3                        retq
+   +73  0000000100000e19  0f1f8000000000            nopl        (%rax)
+
+_setkey:
+    +0  0000000100000e20  55                        pushq       %rbp
+    +1  0000000100000e21  4889e5                    movq        %rsp, %rbp
+    +4  0000000100000e24  897dfc                    movl        %edi, -0x4(%rbp)
+    +7  0000000100000e27  8b7dfc                    movl        -0x4(%rbp), %edi
+   +10  0000000100000e2a  897df4                    movl        %edi, -0xc(%rbp)
+   +13  0000000100000e2d  c745f800000000            movl        $0x0, -0x8(%rbp)
+   +20  0000000100000e34  837df81a                  cmpl        $0x1a, -0x8(%rbp)
+   +24  0000000100000e38  0f8d3e000000              jge         0x100000e7c
+   +30  0000000100000e3e  488d05db010000            leaq        0x1db(%rip), %rax             _keybuf
+   +37  0000000100000e45  b91a000000                movl        $0x1a, %ecx
+   +42  0000000100000e4a  8b55f4                    movl        -0xc(%rbp), %edx
+   +45  0000000100000e4d  488945e8                  movq        %rax, -0x18(%rbp)
+   +49  0000000100000e51  89d0                      movl        %edx, %eax
+   +51  0000000100000e53  99                        cltd
+   +52  0000000100000e54  f7f9                      idivl       %ecx
+   +54  0000000100000e56  4088d6                    movb        %dl, %sil
+   +57  0000000100000e59  48637df8                  movslq      -0x8(%rbp), %rdi
+   +61  0000000100000e5d  4c8b45e8                  movq        -0x18(%rbp), %r8
+   +65  0000000100000e61  41883438                  movb        %sil, (%r8,%rdi)
+   +69  0000000100000e65  8b4dfc                    movl        -0x4(%rbp), %ecx
+   +72  0000000100000e68  034df4                    addl        -0xc(%rbp), %ecx
+   +75  0000000100000e6b  894df4                    movl        %ecx, -0xc(%rbp)
+   +78  0000000100000e6e  8b45f8                    movl        -0x8(%rbp), %eax
+   +81  0000000100000e71  83c001                    addl        $0x1, %eax
+   +84  0000000100000e74  8945f8                    movl        %eax, -0x8(%rbp)
+   +87  0000000100000e77  e9b8ffffff                jmp         0x100000e34
+
+Anon2:
+    +0  0000000100000e7c  5d                        popq        %rbp
+    +1  0000000100000e7d  c3                        retq
+
+Anon3:
+    +0  0000000100000e7e  6690                      nop
+
+_encrypt:
+    +0  0000000100000e80  55                        pushq       %rbp
+    +1  0000000100000e81  4889e5                    movq        %rsp, %rbp
+    +4  0000000100000e84  4883ec10                  subq        $0x10, %rsp
+    +8  0000000100000e88  48897df8                  movq        %rdi, -0x8(%rbp)
+   +12  0000000100000e8c  488b7df8                  movq        -0x8(%rbp), %rdi
+   +16  0000000100000e90  48897df0                  movq        %rdi, -0x10(%rbp)
+   +20  0000000100000e94  488b45f8                  movq        -0x8(%rbp), %rax
+   +24  0000000100000e98  803800                    cmpb        $0x0, (%rax)
+   +27  0000000100000e9b  0f849f000000              je          0x100000f40                   return;
+   +33  0000000100000ea1  488b45f8                  movq        -0x8(%rbp), %rax
+   +37  0000000100000ea5  0fbe08                    movsbl      (%rax), %ecx
+   +40  0000000100000ea8  83f961                    cmpl        $0x61, %ecx                   'a'
+   +43  0000000100000eab  0f8c37000000              jl          0x100000ee8
+   +49  0000000100000eb1  488b45f8                  movq        -0x8(%rbp), %rax
+   +53  0000000100000eb5  0fbe08                    movsbl      (%rax), %ecx
+   +56  0000000100000eb8  83f97a                    cmpl        $0x7a, %ecx                   'z'
+   +59  0000000100000ebb  0f8f27000000              jg          0x100000ee8
+   +65  0000000100000ec1  488b45f8                  movq        -0x8(%rbp), %rax
+   +69  0000000100000ec5  0fbe08                    movsbl      (%rax), %ecx
+   +72  0000000100000ec8  83e961                    subl        $0x61, %ecx
+   +75  0000000100000ecb  88ca                      movb        %cl, %dl
+   +77  0000000100000ecd  0fbefa                    movsbl      %dl, %edi
+   +80  0000000100000ed0  e87b000000                callq       _codepoint
+   +85  0000000100000ed5  0fbec8                    movsbl      %al, %ecx
+   +88  0000000100000ed8  83c161                    addl        $0x61, %ecx
+   +91  0000000100000edb  88c8                      movb        %cl, %al
+   +93  0000000100000edd  488b75f8                  movq        -0x8(%rbp), %rsi
+   +97  0000000100000ee1  8806                      movb        %al, (%rsi)
+   +99  0000000100000ee3  e947000000                jmp         0x100000f2f
+  +104  0000000100000ee8  488b45f8                  movq        -0x8(%rbp), %rax
+  +108  0000000100000eec  0fbe08                    movsbl      (%rax), %ecx
+  +111  0000000100000eef  83f941                    cmpl        $0x41, %ecx                   'A'
+  +114  0000000100000ef2  0f8c32000000              jl          0x100000f2a
+  +120  0000000100000ef8  488b45f8                  movq        -0x8(%rbp), %rax
+  +124  0000000100000efc  0fbe08                    movsbl      (%rax), %ecx
+  +127  0000000100000eff  83f95a                    cmpl        $0x5a, %ecx                   'Z'
+  +130  0000000100000f02  0f8f22000000              jg          0x100000f2a
+  +136  0000000100000f08  488b45f8                  movq        -0x8(%rbp), %rax
+  +140  0000000100000f0c  0fbe08                    movsbl      (%rax), %ecx
+  +143  0000000100000f0f  83e941                    subl        $0x41, %ecx
+  +146  0000000100000f12  88ca                      movb        %cl, %dl
+  +148  0000000100000f14  0fbefa                    movsbl      %dl, %edi
+  +151  0000000100000f17  e834000000                callq       _codepoint
+  +156  0000000100000f1c  0fbec8                    movsbl      %al, %ecx
+  +159  0000000100000f1f  83c141                    addl        $0x41, %ecx
+  +162  0000000100000f22  88c8                      movb        %cl, %al
+  +164  0000000100000f24  488b75f8                  movq        -0x8(%rbp), %rsi
+  +168  0000000100000f28  8806                      movb        %al, (%rsi)
+  +170  0000000100000f2a  e900000000                jmp         0x100000f2f
+  +175  0000000100000f2f  488b45f8                  movq        -0x8(%rbp), %rax
+  +179  0000000100000f33  4883c001                  addq        $0x1, %rax
+  +183  0000000100000f37  488945f8                  movq        %rax, -0x8(%rbp)
+  +187  0000000100000f3b  e954ffffff                jmp         0x100000e94
+  +192  0000000100000f40  488b45f0                  movq        -0x10(%rbp), %rax
+  +196  0000000100000f44  4883c410                  addq        $0x10, %rsp
+  +200  0000000100000f48  5d                        popq        %rbp
+  +201  0000000100000f49  c3                        retq
+  +202  0000000100000f4a  660f1f440000              nopw        (%rax,%rax)
+
+_codepoint:
+    +0  0000000100000f50  55                        pushq       %rbp
+    +1  0000000100000f51  4889e5                    movq        %rsp, %rbp
+    +4  0000000100000f54  4088f8                    movb        %dil, %al
+    +7  0000000100000f57  488d0dc2000000            leaq        0xc2(%rip), %rcx              _keybuf
+   +14  0000000100000f5e  8845ff                    movb        %al, -0x1(%rbp)
+   +17  0000000100000f61  480fbe55ff                movsbq      -0x1(%rbp), %rdx
+   +22  0000000100000f66  0fbe0411                  movsbl      (%rcx,%rdx), %eax
+   +26  0000000100000f6a  5d                        popq        %rbp
+   +27  0000000100000f6b  c3                        retq
